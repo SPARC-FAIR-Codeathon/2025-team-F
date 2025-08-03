@@ -48,3 +48,19 @@ def create_noise(scale=0.05):
 
     """
     return tsaug.AddNoise(scale=scale)
+
+
+def create_drift(max_drift=0.2, prob=0.8):
+    """Creates the Drift augmenter
+
+    Args:
+        max_drift (float): maximum drift, default 0.2
+        prob (float): probability of applying drift, default 0.8
+
+    Returns:
+        drift_aug (tsaug.AddNoise): drift augmenter
+
+    Raises:
+
+    """
+    return tsaug.Drift(max_drift=max_drift) @ prob
