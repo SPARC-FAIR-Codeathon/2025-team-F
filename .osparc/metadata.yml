@@ -3,7 +3,7 @@ key: simcore/services/comp/sparcats
 type: computational
 integration-version: 1.0.0
 version: 0.1.0
-description: Generate sugmented time series physiological data based on data from the SPARC Data Portal.
+description: Generate augmented time series physiological data based on data from the SPARC Data Portal.
 contact: oath399@aucklanduni.ac.nz
 thumbnail: https://github.com/ITISFoundation/osparc-assets/blob/cb43207b6be2f4311c93cd963538d5718b41a023/assets/default-thumbnail-cookiecutter-osparc-service.png?raw=true
 authors:
@@ -13,22 +13,22 @@ authors:
 inputs:
   input_1:
     displayOrder: 1
-    label: input_1_label
-    description: The input 1 description
+    label: Target Organ/Location
+    description: Organ from which signal is measured
     type: string
-    # allowed input / output types are "string", "number", "bool", "data:*/*"
-    defaultValue: some_value(optional)
-    fileToKeyMap:
-      somefilename.ext: input_1
+    contentSchema:
+      title: Organ
+      default: Heart (ECG)
+      enum: [Heart, Vagus nerve, Nodose ganglion]
   input_2:
     displayOrder: 2
-    label: input_2_label
-    description: The input 2 description
-    type: string
-    # allowed input / output types are "string", "number", "bool", "data:*/*"
-    defaultValue: some_value(optional)
-    fileToKeyMap:
-      somefilename.ext: input_2
+    label: Species
+    description: Species from which source data were measured
+    type: ref_contentSchema
+      contentSchema: 
+        title: Species
+        default: Mouse
+        enum: [Mouse, Rat, Human, Pig]
   input_3:
     displayOrder: 3
     label: input_3_label
