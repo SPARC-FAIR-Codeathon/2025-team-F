@@ -8,7 +8,11 @@ Author: Mathias Roesler
 Date: 08/25
 """
 
+import os
+import pathlib
+
 import numpy as np
+import pandas as pd
 import tsaug as tsaug
 
 
@@ -35,6 +39,33 @@ def generate_augmented_data(data, augmenter, n):
         augmented_data[:, i] = augmenter.augment(data)
 
     return augmented_data
+
+
+def save_to_csv(augmented_data, Fs, save_name):
+    """Saves augmented data to a csv file
+
+    Args:
+        augmented_data (np.array(float)): augmented data
+        Fs (int): sampling frequency to add timestamps
+        save_name (str): name of file to save data in
+
+    Returns:
+
+    Raises:
+
+    """
+    t = (
+        np.linspace(0, augmented_data.shape[0], augmented_data.shape[0]) / Fs
+    )  # Create timestamps
+
+    # Create data frame to save to csv
+    df = pd.DataFrame(augmented_data)
+    df.insert(0, "Time", t)  # Add timestamps
+
+    root_path = pathlib.Path(__name__).resolve().parent.parents[1]
+    save_path = os.path.join(root_path, "validation/output", save_name)
+
+    df.to_csv(save_path, index=False)  # Save to csv
 
 
 def create_augmenter(arr_augmenters):
