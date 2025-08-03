@@ -22,6 +22,7 @@ def create_augmenter(arr_augmenters):
 
     Raises:
         ValueError: if arr_augmenters is empty.
+
     """
     if len(arr_augmenters) == 0:
         raise ValueError("arr_augmenters is empty")
@@ -32,3 +33,18 @@ def create_augmenter(arr_augmenters):
         augmenter += arr_augmenters[i + 1]
 
     return augmenter
+
+
+def create_noise(scale=0.05):
+    """Creates the AddNoise augmenter
+
+    Args:
+        scale (float): scale for the noise, default 0.05
+
+    Returns:
+        noise_aug (tsaug.AddNoise): add noise augmenter
+
+    Raises:
+
+    """
+    return tsaug.AddNoise(scale=scale)
