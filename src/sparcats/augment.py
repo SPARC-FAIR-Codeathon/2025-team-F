@@ -8,7 +8,33 @@ Author: Mathias Roesler
 Date: 08/25
 """
 
+import numpy as np
 import tsaug as tsaug
+
+
+def generate_augmented_data(data, augmenter, n):
+    """Generates n datasets of augmented data
+
+    Args:
+        data (np.array(float)): data to augment
+        augmenter (tsaug.AugmenterPipe): augmenter pipe
+        n (int): number of datasets to generate
+
+    Returns:
+        augmented_data (np.array(float)): augmented data
+
+    Raises:
+        ValueError: if n is not positive
+    """
+    if not isinstance(n, int) or n <= 0:
+        raise ValueError("n should be a positive integer")
+
+    augmented_data = np.zeros((len(data), n))  # Allocate memory
+
+    for i in range(n):
+        augmented_data[:, i] = augmenter.augment(data)
+
+    return augmented_data
 
 
 def create_augmenter(arr_augmenters):
