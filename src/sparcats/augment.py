@@ -63,9 +63,39 @@ def save_to_csv(augmented_data, Fs, save_name):
     df.insert(0, "Time", t)  # Add timestamps
 
     root_path = pathlib.Path(__name__).resolve().parent.parents[1]
-    save_path = os.path.join(root_path, "validation/output", save_name)
+    save_path = root_path / "validation/output" / save_name
 
     df.to_csv(save_path, index=False)  # Save to csv
+
+
+def read_from_csv(file_path):
+    """Reads the data from a csv file
+
+    Args:
+        file_path (str): path to the csv file
+
+    Returns:
+        data (np.array[float]): data read from csv file
+        t (np.array[float]): timestamps from data
+
+    Raises:
+        FileNotFoundError: if the file does not exist
+        ValueError: if the extension is not csv
+
+    """
+    loaded_file = pathlib.Path(file_path)
+
+    if not loaded_file.is_file():
+        raise FileNotFoundError(f"{file_path} was not found")
+
+    if not loaded_file.suffix == ".csv":
+        raise ValueError(f"{file_path} should be a csv file")
+
+    df = pd.read_csv(file_path)  # Read file
+    t = df[df.columns[0]].to_numpy()  # Get timesteps
+    data = df[df.columns[1]].to_numpy()  # Get data
+
+    return data, t
 
 
 def create_augmenter(arr_augmenters):
