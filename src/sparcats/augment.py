@@ -64,3 +64,26 @@ def create_drift(max_drift=0.2, prob=0.8):
 
     """
     return tsaug.Drift(max_drift=max_drift) @ prob
+
+
+def create_warp(max_speed_ratio=2.5, n_speed_change=5, prob=0.6):
+    """Creates the TimeWarp augmenter
+
+    Args:
+        max_speed_ratio (float): maximum value of speed change, default 2.5
+        n_speed_change=5 (int): number of speed changes in the signal, default 5
+        prob (float): probability of applying drift, default 0.6
+
+    Returns:
+        time_warp_aug (tsaug.AddNoise): time warp augmenter
+
+    Raises:
+
+    """
+    return (
+        tsaug.TimeWarp(
+            max_speed_ratio=max_speed_ratio,
+            n_speed_change=n_speed_change,
+        )
+        @ prob
+    )
