@@ -15,8 +15,8 @@ inputs:
     displayOrder: 1
     label: Target Organ/Location
     description: Organ from which signal is measured
-    type: string
-    contentSchema:
+    type: ref_contentSchema
+    contentSchema: 
       title: Organ
       default: Heart (ECG)
       enum: [Heart, Vagus nerve, Nodose ganglion]
@@ -25,10 +25,10 @@ inputs:
     label: Species
     description: Species from which source data were measured
     type: ref_contentSchema
-      contentSchema: 
-        title: Species
-        default: Mouse
-        enum: [Mouse, Rat, Human, Pig]
+    contentSchema: 
+      title: Species
+      default: Mouse
+      enum: [Mouse, Rat, Human, Pig]
   input_3:
     displayOrder: 3
     label: input_3_label
