@@ -1,10 +1,10 @@
 {
-    "input_1": "some_stuff",
-    "input_2": "some_stuff",
-    "input_3": "some_stuff",
-    "input_4": "some_stuff",
-    "input_5": "some_stuff",
-    "input_6": "some_stuff",
-    "input_7": "some_stuff",
-    "input_8": "some_stuff"
+    "input_1": "Nodose ganglion",
+    "input_2": "Rat",
+    "input_3": "Female",
+    "input_4": 8,
+    "input_5": false,
+    "input_6": true,
+    "input_7": true,
+    "input_8": false
 }

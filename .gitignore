@@ -18,7 +18,7 @@ tmp/
 # make outputs
 pytest_*.xml
 .compose*
-
+docker-compose.yml
 # validation folder
 !validation/**/*
 # docker ignore
