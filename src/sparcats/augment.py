@@ -8,6 +8,7 @@ Author: Mathias Roesler
 Date: 08/25
 """
 
+import json
 import pathlib
 
 import numpy as np
@@ -97,6 +98,33 @@ def read_from_csv(file_path):
     return data, t
 
 
+def parse_json(json_file="../../validation/input/inputs.json"):
+    """Parse the information from the JSON file to get input arguments
+
+    Args:
+        json_file (str): path to json file
+
+    Returns:
+        data (dict): dict with input arguments
+
+    Raises:
+        ValueError: if the extension is not json
+        FileNotFoundError: if the file is not found
+
+    """
+    args = []  # Store input arguments
+    loaded_file = pathlib.Path(json_file)
+
+    if not loaded_file.is_file():
+        raise FileNotFoundError(f"{json_file} was not found")
+
+    if not loaded_file.suffix == ".json":
+        raise ValueError(f"{json_file} should be a json file")
+
+    with open(json_file, "r") as file:
+        data = json.load(file)
+
+    return data
 def create_augmenter(arr_augmenters):
     """Creates an AugmenterPipe from input arguments
 
