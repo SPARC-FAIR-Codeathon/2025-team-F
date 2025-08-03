@@ -8,7 +8,6 @@ Author: Mathias Roesler
 Date: 08/25
 """
 
-import os
 import pathlib
 
 import numpy as np
