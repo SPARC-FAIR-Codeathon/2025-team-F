@@ -1,0 +1,16 @@
+
+#!/bin/sh
+#---------------------------------------------------------------
+# AUTO-GENERATED CODE, do not modify this will be overwritten!!!
+#---------------------------------------------------------------
+# shell strict mode:
+set -o errexit
+set -o nounset
+IFS=$(printf '\n\t')
+cd "$(dirname "$0")"
+    
+INPUT_1=$INPUT_FOLDER/input.zip
+export INPUT_1
+
+exec execute.sh
+    

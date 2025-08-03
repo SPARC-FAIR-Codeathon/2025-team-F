@@ -1,0 +1,41 @@
+# This file exists so you can easily regenerate your project.
+#
+# `cookiepatcher` is a convenient shim around `cookiecutter`
+# for regenerating projects (it will generate a .cookiecutterrc
+# automatically for any template). To use it:
+#
+#    pip install cookiepatcher
+#    cookiepatcher gh:itisfoundation/cookiecutter-osparc-service project-path
+#
+# See:
+#    https://pypi.python.org/pypi/cookiepatcher
+#
+# Alternatively, you can run:
+#
+#    cookiecutter --overwrite-if-exists --config-file=project-path/.cookiecutterrc gh:itisfoundation/cookiecutter-osparc-service
+#
+
+default_context:
+
+    _checkout:                 None
+    _output_dir:               '/home/wsl_user/2025-team-F'
+    _repo_dir:                 '/home/wsl_user/.cookiecutters/cookiecutter-osparc-service'
+    _template:                 'gh:ITISFoundation/cookiecutter-osparc-service'
+    author_affiliation:        'University of Auckland'
+    author_email:              'oath399@aucklanduni.ac.nz'
+    author_name:               'Omkar Athavale'
+    contact_email:             'oath399@aucklanduni.ac.nz'
+    default_docker_registry:   'itisfoundation'
+    docker_base:               'python:3.10'
+    git_repo:                  'local'
+    git_username:              'OmkarAthavale'
+    number_of_inputs:          '8'
+    number_of_outputs:         '1'
+    project_name:              'SPARCats'
+    project_package_name:      'sparcats'
+    project_short_description: 'Generate sugmented time series physiological data based on data from the SPARC Data Portal.'
+    project_slug:              'sparcats'
+    project_type:              'computational'
+    release_date:              '2025'
+    version:                   '0.1.0'
+    version_display:           '0.1.0'
