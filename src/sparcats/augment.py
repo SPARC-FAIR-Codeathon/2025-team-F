@@ -125,6 +125,47 @@ def parse_json(json_file="../../validation/input/inputs.json"):
         data = json.load(file)
 
     return data
+
+
+def setup_augmenter(input_data):
+    """Sets up the augmenters based on the input data
+
+    Args:
+        input_data (dict): dict containing the user input data
+
+    Returns:
+        arr_augmenter (list[tsaug.augmenter]): list of augmentation operations
+
+    Raises:
+        KeyError: if the key is not found in input_data
+
+    """
+    arr_augmenters = []
+
+    try:
+        if input_data["drift_aug"] == True:
+            arr_augmenters.append(
+                create_drift(input_data["max_drift"], input_data["drift_prob"])
+            )
+
+        if input_data["noise_aug"] == True:
+            arr_augmenters.append(create_noise(input_data["noise_scale"]))
+
+        if input_data["warp_aug"] == True:
+            arr_augmenters.append(
+                create_warp(
+                    input_data["warp_ratio"],
+                    input_data["warp_speed"],
+                    input_data["warp_prob"],
+                )
+            )
+
+    except KeyError:
+        raise
+
+    return arr_augmenters
+
+
 def create_augmenter(arr_augmenters):
     """Creates an AugmenterPipe from input arguments
 
