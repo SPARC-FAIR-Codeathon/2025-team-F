@@ -8,7 +8,9 @@ Author: Mathias Roesler
 Date: 08/25
 """
 
+import json
 import pathlib
+import scipy.io
 
 import numpy as np
 import pandas as pd
@@ -70,12 +72,13 @@ def save_to_csv(augmented_data, Fs, save_name):
 def read_from_csv(file_path):
     """Reads the data from a csv file
 
+    Assume that there is only one column with the data to augment
+
     Args:
         file_path (str): path to the csv file
 
     Returns:
         data (np.array[float]): data read from csv file
-        t (np.array[float]): timestamps from data
 
     Raises:
         FileNotFoundError: if the file does not exist
@@ -91,10 +94,110 @@ def read_from_csv(file_path):
         raise ValueError(f"{file_path} should be a csv file")
 
     df = pd.read_csv(file_path)  # Read file
-    t = df[df.columns[0]].to_numpy()  # Get timesteps
-    data = df[df.columns[1]].to_numpy()  # Get data
+    data = df[df.columns[0]].to_numpy()  # Get data
 
-    return data, t
+    return data
+
+
+def read_from_mat(file_path):
+    """Reads the data from a mat file
+
+    Assume that there is only one column with the data to augment
+
+    Args:
+        file_path (str): path to the mat file
+
+    Returns:
+        data (np.array[float]): data read from mat file
+
+    Raises:
+        FileNotFoundError: if the file does not exist
+        ValueError: if the extension is not csv
+
+    """
+    loaded_file = pathlib.Path(file_path)
+
+    if not loaded_file.is_file():
+        raise FileNotFoundError(f"{file_path} was not found")
+
+    if not loaded_file.suffix == ".mat":
+        raise ValueError(f"{file_path} should be a mat file")
+
+    loaded_data = scipy.io.loadmat(file_path)  # Read file
+
+    for key in loaded_data.keys():
+        if not key[0:2] == "__":
+            data = loaded_data[key]
+
+    return data
+
+
+def parse_json(json_file="../../validation/input/inputs.json"):
+    """Parse the information from the JSON file to get input arguments
+
+    Args:
+        json_file (str): path to json file
+
+    Returns:
+        data (dict): dict with input arguments
+
+    Raises:
+        ValueError: if the extension is not json
+        FileNotFoundError: if the file is not found
+
+    """
+    args = []  # Store input arguments
+    loaded_file = pathlib.Path(json_file)
+
+    if not loaded_file.is_file():
+        raise FileNotFoundError(f"{json_file} was not found")
+
+    if not loaded_file.suffix == ".json":
+        raise ValueError(f"{json_file} should be a json file")
+
+    with open(json_file, "r") as file:
+        data = json.load(file)
+
+    return data
+
+
+def setup_augmenter(input_data):
+    """Sets up the augmenters based on the input data
+
+    Args:
+        input_data (dict): dict containing the user input data
+
+    Returns:
+        arr_augmenter (list[tsaug.augmenter]): list of augmentation operations
+
+    Raises:
+        KeyError: if the key is not found in input_data
+
+    """
+    arr_augmenters = []
+
+    try:
+        if input_data["drift_aug"] == True:
+            arr_augmenters.append(
+                create_drift(input_data["max_drift"], input_data["drift_prob"])
+            )
+
+        if input_data["noise_aug"] == True:
+            arr_augmenters.append(create_noise(input_data["noise_scale"]))
+
+        if input_data["warp_aug"] == True:
+            arr_augmenters.append(
+                create_warp(
+                    input_data["warp_ratio"],
+                    input_data["warp_speed"],
+                    input_data["warp_prob"],
+                )
+            )
+
+    except KeyError:
+        raise
+
+    return arr_augmenters
 
 
 def create_augmenter(arr_augmenters):
