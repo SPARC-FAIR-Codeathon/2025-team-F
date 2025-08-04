@@ -5,4 +5,3 @@ services:
     volumes:
       - ${PWD}/validation/input:/input
       - ${PWD}/validation/output:/output
-      - ${PWD}/src/sparcats:/src
