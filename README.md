@@ -1,9 +1,7 @@
 # SPARCats
-
-A o<sup>2</sup>S<sup>2</sup>PARC tool to accellerate data discovery by AI bring take breakthroughs in the laboratory into healthcare. SPARCats generate synthetic augmented physiological data available through the SPARC Data Portal to improve AI training. 
+A o<sup>2</sup>S<sup>2</sup>PARC tool to accelerate data discovery by AI and bring breakthroughs in the laboratory into healthcare. SPARCats generates synthetic augmented physiological data available through the SPARC Data Portal to improve AI training. 
 
 ![alt text][logo]
-
 [logo]: https://github.com/SPARC-FAIR-Codeathon/2025-team-F/blob/README/res/sparcats.jpg
 
 ![Python 3](https://img.shields.io/badge/Python->=3.9-blue)
@@ -56,26 +54,37 @@ The SPARC Portal offers a user-friendly interface to access and share resources 
 AI can produce powerful tools for predicting and analysing a wide range of physiological biomarkers. Researchers want to use physiological time series data train AI models to answer scientific questions and distill impactful medical insights. They need a tool that allows them to seamlessly discover and generate augmented data from publicly available physiological data. 
 
 ### Limited Accessibility:
-- SPARC boasts a trove of datasets and tools, but these can be difficult to access and deploy for users that are not proficient in coding. 
+- SPARC boasts a trove of datasets and tools, but some of these can be difficult to access and deploy for users that are not proficient in coding.  
 ### Poor Findability
-- There is no tool to easily search and collect relevant datafiles from the data sets available on SPARC, leaving data underutilised.   
+- There is no tool to easily search and collect relevant datafiles from the data sets available within o<sup>2</sup>S<sup>2</sup>PARC, leaving data underutilised.   
 ### Difficulties in Reusability:
 - Without a standardized approach to data augmentation, researchers may struggle to replicate or pipelines for different datasets or research contexts.
-- There is limited data available that is similar enough to be used for training a given AI tool. Data augmentation 
 
 ## Our solution - (SPARCats)
-We have developed a robust data augmentation toolkit in Python (SPARCats) that runs within o<sup>2</sup>S<sup>2</sup>PARC to generate synthetic datasets. 
+We have developed a robust SPARC augmented timeseries (SPARCats) toolkit that runs within o<sup>2</sup>S<sup>2</sup>PARC to generate synthetic datasets. This toolkit empowers researchers to easily create pipelines that incorporate novel or published data as augmented training data for AI models. SPARCats includes a number of cookie-cutter services:
+- **Search** - The search feature enables the user to search for related datasets by filtering on experiment type, species, sex, and organ. With a little further tweaking, this module can become a become a general purpose sparc portal search service embedded within o<sup>2</sup>S<sup>2</sup>PARC. See tutorial #TODO
+- **Augment** - The augment feature enables the user to perform a configurable data augmentation through the methods of [TODO]. The resulting synthetic dataset can be saved or piped directly into training an AI model. See tutorial #TODO
+- **Split data** - The split data feature allows for the user to perform a configurable test/train data split for training. See tutorial #TODO
+- **Train** - The train feature enables the user to pass data (usually augmented data) into a specific model for training. The resulting model can be saved, or used directly to make predictions on real data. See tutorial #TODO
+- **Predict** - The predict feature enables the user to pass real data into a trained AI model to generate predictions and outputs to evaluate. See tutorial #TODO
 
-SPARCats has been developed to adhere to and enhance the [FAIR](https://www.nature.com/articles/sdata201618) and [TRUST](https://www.nature.com/articles/s41597-020-0486-7) principles core to SPARC
-    
+
+SPARCats has been developed to adhere to and enhance the [FAIR](https://www.nature.com/articles/sdata201618) core to SPARC.
+- **F**indable - The SPARCats search tool directly enhances the findability of data contained within SPARC. 
+- **A**ccessible - The low-code nature of the SPARCats cookie-cutter modules and comprehensive tutorials make searching for data, augmentation of data, and AI training accessible to users with a wide range of backgrounds and skills. From wetlab scientists, to curious highschool students. 
+- **I**nteroperable - SPARCats incorporates many existing SPARC tools and can be incorporated into a wide range of workflows.
+- **R**eproducible -  The configurability of the SPARCats cookie-cutter modules enables repeatable, sharable pipelines.  
+
+
 ## Impact
-This can be used to enhance understanding of the autonomic and peripheral nervous systems and drive
+This can be used to enhance understanding of the autonomic and peripheral nervous systems and accelerate the development of healthcare innovation. 
 
+S
 ### Develops new capabilities of SPARC tools within o<sup>2</sup>S<sup>2</sup>PARC
 
 
-### Increase visibility of the value within SPARC's public data 
-
+### Increase visibility and value of SPARC's public data 
+The **Search** and **Augment** modules within SPARCats enables 
 
 
 ## Setting up sparcats
@@ -117,7 +126,7 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
     Tutorial 1: 
     </a></td>
     <td> <b>Getting started</b> - In this tutorial we ...
-    absolute basics for no code new to osparc
+    Absolute basics for no code new to osparc
     Show how data augmentation improves performance & generalization of the resulting AI.
     </td>
   </tr>
@@ -145,7 +154,6 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
     Augment data, evaluate with pre-trained AI. Emphasise model should be trained on data similar to evaluation. 
     </td>
   </tr>
-
   <tr>
     <td><a href="tutorials/tutorial_5_transfer_learning.ipynb">
     Tutorial 5: 
@@ -165,16 +173,12 @@ To report an issue or suggest a new feature, please use the [issues page](https:
 Please check existing issues before submitting a new one.
 
 ## Contributing
-To contribute: fork this repository and submit a pull request. Before submitting a pull request, please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md). If you found this tool helpful, please add a GitHub Star to support further developments!
+To contribute: fork this repository and submit a pull request. Before submitting a pull request, please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md). If you found this tool helpful, please add a GitHub Star to support further developments! #TODO
 
 ### Project structure
 * `/src/` - Directory of sparcats python module.
 * `/tutorials/` - Directory of tutorials and use cases showcasing sparcats python module in use.
   
-
-## FAIR practices
-We have assessed the FAIRness of our sparcats tool against the FAIR Principles established for research software. The details are available in the following [sparcats-Fairness](/docs/sparcats-FAIRness.docx)
-*TODO*
 ## License
 Sparcats is open source and distributed under the Apache License 2.0. See [LICENSE](https://github.com/SPARC-FAIR-Codeathon/2025-team-F/blob/main/LICENSE) for more information.
 ## Team
