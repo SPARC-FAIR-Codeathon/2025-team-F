@@ -73,18 +73,17 @@ SPARCats has been developed to adhere to and enhance the [FAIR](https://www.natu
 - **F**indable - The SPARCats search tool directly enhances the findability of data contained within SPARC. 
 - **A**ccessible - The low-code nature of the SPARCats cookie-cutter modules and comprehensive tutorials make searching for data, augmentation of data, and AI training accessible to users with a wide range of backgrounds and skills. From wetlab scientists, to curious highschool students. 
 - **I**nteroperable - SPARCats incorporates many existing SPARC tools and can be incorporated into a wide range of workflows.
-- **R**eproducible -  The configurability of the SPARCats cookie-cutter modules enables repeatable, sharable pipelines.  
+- **R**eusable -  The configurability of the SPARCats cookie-cutter modules enables repeatable, sharable pipelines while encoraging the use of published data.  
 
 
 ## Impact
-This can be used to enhance understanding of the autonomic and peripheral nervous systems and accelerate the development of healthcare innovation. 
+SPARCats can be used to enhance understanding of the autonomic and peripheral nervous systems and accelerate the development of healthcare innovation. 
 
-S
 ### Develops new capabilities of SPARC tools within o<sup>2</sup>S<sup>2</sup>PARC
-
+The tools offered by SPARCats extends the capabilities of o<sup>2</sup>S<sup>2</sup>PARC to streamline the discovery of data and development of AI tools. This can be done in a no/low-code way, that is accessible to a wide audience, beyond just research scientists. 
 
 ### Increase visibility and value of SPARC's public data 
-The **Search** and **Augment** modules within SPARCats enables 
+The **Search** and **Augment** modules within SPARCats enables users to easily find relevant data to include in their AI project. The augmentation tools offered enable published data to be readily used as training data for AI models, increasing the value of existing datasets. 
 
 
 ## Setting up sparcats
