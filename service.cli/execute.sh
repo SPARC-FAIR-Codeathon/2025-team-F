@@ -4,8 +4,6 @@ set -o errexit
 set -o nounset
 IFS=$(printf '\n\t')
 
-cd /home/scu/src/sparcats
-
 echo "starting service as"
 echo   User    : "$(id "$(whoami)")"
 echo   Workdir : "$(pwd)"
@@ -24,7 +22,7 @@ env
 ls -al "${INPUT_FOLDER}"
 # or for example, to execute a python script on some input data:
 
-python3 main.py "/input/inputs.json"
+python3 /src/main.py "/input/inputs.json"
 #cp output_file.json "${OUTPUT_FOLDER}"/outputs.json 
 
 #EOF
