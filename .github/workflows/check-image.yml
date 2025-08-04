@@ -1,0 +1,22 @@
+name: Build and check image
+
+on: ["push", "pull_request"]
+
+jobs:
+  verify-image-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo content
+        uses: actions/checkout@v2
+      - name: ooil version
+        uses: docker://itisfoundation/ci-service-integration-library:v2.1.25
+        with:
+          args: ooil --version
+      - name: Assemble docker compose spec
+        uses: docker://itisfoundation/ci-service-integration-library:v2.1.25
+        with:
+          args: ooil compose
+      - name: Build all images if multiple
+        uses: docker://itisfoundation/ci-service-integration-library:v2.1.25
+        with:
+          args: docker compose build
