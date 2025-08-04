@@ -5,8 +5,6 @@ A o<sup>2</sup>S<sup>2</sup>PARC tool to accellerate data discovery by AI bring 
 ![Python 3](https://img.shields.io/badge/Python->=3.9-blue)
 [![Contributors][contributors-shield]][contributors-url]
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![GitHub issues-closed][issues-closed-shield]][issues-url]
 [![License][license-shield]][license-url]
 [![Contributor Covenant][code-of-conduct-shield]](CODE_OF_CONDUCT.md)
 [![PyPI version fury.io][pypi-shield]][pypi-url]
