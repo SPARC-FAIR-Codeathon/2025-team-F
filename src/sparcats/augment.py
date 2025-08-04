@@ -10,6 +10,7 @@ Date: 08/25
 
 import json
 import pathlib
+import scipy.io
 
 import numpy as np
 import pandas as pd
@@ -94,6 +95,39 @@ def read_from_csv(file_path):
 
     df = pd.read_csv(file_path)  # Read file
     data = df[df.columns[0]].to_numpy()  # Get data
+
+    return data
+
+
+def read_from_mat(file_path):
+    """Reads the data from a mat file
+
+    Assume that there is only one column with the data to augment
+
+    Args:
+        file_path (str): path to the mat file
+
+    Returns:
+        data (np.array[float]): data read from mat file
+
+    Raises:
+        FileNotFoundError: if the file does not exist
+        ValueError: if the extension is not csv
+
+    """
+    loaded_file = pathlib.Path(file_path)
+
+    if not loaded_file.is_file():
+        raise FileNotFoundError(f"{file_path} was not found")
+
+    if not loaded_file.suffix == ".mat":
+        raise ValueError(f"{file_path} should be a mat file")
+
+    loaded_data = scipy.io.loadmat(file_path)  # Read file
+
+    for key in loaded_data.keys():
+        if not key[0:2] == "__":
+            data = loaded_data[key]
 
     return data
 
