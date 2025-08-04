@@ -71,12 +71,13 @@ def save_to_csv(augmented_data, Fs, save_name):
 def read_from_csv(file_path):
     """Reads the data from a csv file
 
+    Assume that there is only one column with the data to augment
+
     Args:
         file_path (str): path to the csv file
 
     Returns:
         data (np.array[float]): data read from csv file
-        t (np.array[float]): timestamps from data
 
     Raises:
         FileNotFoundError: if the file does not exist
@@ -92,10 +93,9 @@ def read_from_csv(file_path):
         raise ValueError(f"{file_path} should be a csv file")
 
     df = pd.read_csv(file_path)  # Read file
-    t = df[df.columns[0]].to_numpy()  # Get timesteps
-    data = df[df.columns[1]].to_numpy()  # Get data
+    data = df[df.columns[0]].to_numpy()  # Get data
 
-    return data, t
+    return data
 
 
 def parse_json(json_file="../../validation/input/inputs.json"):
