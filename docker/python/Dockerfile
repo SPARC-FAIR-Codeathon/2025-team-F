@@ -90,7 +90,7 @@ COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} service.cli/ service.cli/
 ENV PATH="/home/${SC_USER_NAME}/service.cli:${PATH}"
 
 # copy binaries from build
-COPY --from=build --chown=${SC_USER_NAME}:${SC_USER_NAME} /build/bin sparcats
+COPY --from=build --chown=${SC_USER_NAME}:${SC_USER_NAME} /build/bin src/sparcats
 
 # ------------------------------------------------------------------------------------
 #TODO:
@@ -102,5 +102,5 @@ COPY --from=build --chown=${SC_USER_NAME}:${SC_USER_NAME} /build/bin sparcats
 #             CMD ["healthchecker app"]
 # ------------------------------------------------------------------------------------
 
-ENTRYPOINT [ "/bin/sh", "docker/entrypoint.sh", "/bin/sh", "-c" ]
+ENTRYPOINT [ "/bin/sh", "docker/entrypoint.sh" ]
 CMD ["run"]
