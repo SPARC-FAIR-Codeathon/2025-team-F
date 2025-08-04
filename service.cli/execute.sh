@@ -22,7 +22,7 @@ env
 ls -al "${INPUT_FOLDER}"
 # or for example, to execute a python script on some input data:
 
-python3 /src/main.py "/input/inputs.json"
+python3 "/home/${SC_USER_NAME}/src/sparcats/main.py" "/input/inputs.json"
 #cp output_file.json "${OUTPUT_FOLDER}"/outputs.json 
 
 #EOF
