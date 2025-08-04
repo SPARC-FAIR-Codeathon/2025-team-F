@@ -24,7 +24,7 @@ env
 ls -al "${INPUT_FOLDER}"
 # or for example, to execute a python script on some input data:
 
-python3 /src/main.py "validation/input_data/input_file.txt"
+python3 /src/main.py "/input/inputs.json"
 #cp output_file.json "${OUTPUT_FOLDER}"/outputs.json 
 
 #EOF
