@@ -1,6 +1,6 @@
-# sparcats
+# SPARCats
 
-A Python tool to generate synthetic augmented physiological data based on date available through the SPARC Data Portal. 
+A o<sup>2</sup>S<sup>2</sup>PARC tool to accellerate data discovery by AI bring take breakthroughs in the laboratory into healthcare. SPARCats generate synthetic augmented physiological data available through the SPARC Data Portal to improve AI training. 
 
 ![Python 3](https://img.shields.io/badge/Python->=3.9-blue)
 [![Contributors][contributors-shield]][contributors-url]
@@ -16,10 +16,6 @@ A Python tool to generate synthetic augmented physiological data based on date a
 [contributors-url]: https://github.com/SPARC-FAIR-codeathon/sparcats/graphs/contributors
 [stars-shield]: https://img.shields.io/github/stars/SPARC-FAIR-codeathon/sparcats.svg?style=flat-square
 [stars-url]: https://github.com/SPARC-FAIR-codeathon/sparcats//stargazers
-[issues-shield]: https://img.shields.io/github/issues/SPARC-FAIR-codeathon/sparcats/.svg?style=flat-square
-[issues-url]: https://github.com/SPARC-FAIR-codeathon/sparcats/issues
-[issues-closed-shield]: https://img.shields.io/github/issues-closed/SPARC-FAIR-codeathon/sparcats.svg
-[issues-closed-url]: https://GitHub.com/SPARC-FAIR-Codeathon/sparc-me/issues?q=is%3Aissue+is%3Aclosed
 [license-shield]: https://img.shields.io/github/license/SPARC-FAIR-codeathon/sparcats.svg?style=flat-square
 [license-url]: https://github.com/SPARC-FAIR-codeathon/sparcats/blob/master/LICENSE
 [code-of-conduct-shield]: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg
@@ -34,7 +30,7 @@ A Python tool to generate synthetic augmented physiological data based on date a
 * [About](#about)
 * [Introduction](#introduction)
 * [The problem](#the-problem)
-* [Our solution - (sparcats)](#our-solution---(sparcats))
+* [Our solution - (SPARCats)](#our-solution---(SPARCats))
 * [Impact](#impact)
 * [Contributing](#contributing)
 * [Setting up sparcats](#setting-up-sparcats)
@@ -47,7 +43,7 @@ A Python tool to generate synthetic augmented physiological data based on date a
 
 
 ## About
-This is the repository of team sparcats (Team #F) of the 2025 SPARC Codeathon. Information about the 2025 SPARC Codeathon can be found [here](https://sparc.science/news-and-events/events/2025-sparc-fair-codeathon). 
+This is the repository of team SPARCats (Team #F) of the 2025 SPARC Codeathon. Information about the 2025 SPARC Codeathon can be found [here](https://sparc.science/news-and-events/events/2025-sparc-fair-codeathon). 
 
 No work was done on this project prior to the Codeathon. 
 ## Introduction
@@ -55,30 +51,25 @@ The NIH Common fund program *Stimulating Peripheral Activity to Relieve Conditio
 
 The SPARC Portal offers a user-friendly interface to access and share resources from the SPARC community. It features well-curated, high-impact data, SPARC projects, and computational simulations, all available under the “[Find Data](https://sparc.science/data?type=dataset)” section.
 ## The problem
-
+AI can produce powerful tools for predicting and analysing a wide range of physiological biomarkers. Researchers want to use physiological time series data train AI models to answer scientific questions and distill impactful medical insights. They need a tool that allows them to seamlessly discover and generate augmented data from publicly available physiological data. 
 
 ### Limited Accessibility:
-- 
-### Poor Interoperability:
-- 
+- SPARC boasts a trove of datasets and tools, but these can be difficult to access and deploy for users that are not proficient in coding. 
+### Poor Findability
+- There is no tool to easily search and collect relevant datafiles from the data sets available on SPARC, leaving data underutilised.   
 ### Difficulties in Reusability:
 - Without a standardized approach to data augmentation, researchers may struggle to replicate or pipelines for different datasets or research contexts.
+- There is limited data available that is similar enough to be used for training a given AI tool. Data augmentation 
 
-## Our solution - (sparcats)
-We have developed a robust data augmentation toolkit in Python (sparcats) that runs within o<sup>2</sup>S<sup>2</sup>PARC to generate synthetic datasets. This Python module enhancess the **FAIR**ness of SPARC data by:
+## Our solution - (SPARCats)
+We have developed a robust data augmentation toolkit in Python (SPARCats) that runs within o<sup>2</sup>S<sup>2</sup>PARC to generate synthetic datasets. 
 
-- **F**indable
-  - 
-- **A**ccessible
-  - 
-- **I**nteroperable
-  - 
-- **R**eusable
-  - 
+SPARCats has been developed to adhere to and enhance the [FAIR](https://www.nature.com/articles/sdata201618) and [TRUST](https://www.nature.com/articles/s41597-020-0486-7) principles core to SPARC
     
 ## Impact
-### Develops new capabilities of SPARC tools within oSPARC
+This can be used to enhance understanding of the autonomic and peripheral nervous systems and drive
 
+### Develops new capabilities of SPARC tools within o<sup>2</sup>S<sup>2</sup>PARC
 
 
 ### Increase visibility of the value within SPARC's public data 
@@ -120,34 +111,46 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
 </thead>
 <tbody>
   <tr>
-    <td><a href="tutorials/tutorial_1_getting_started.ipynb">
+    <td><a href="tutorials/tutorial_1_setting_up.ipynb">
     Tutorial 1: 
     </a></td>
-    <td> <b>Getting started</b> - In this tutorial we ...</td>
+    <td> <b>Getting started</b> - In this tutorial we ...
+    absolute basics for no code new to osparc
+    Show how data augmentation improves performance & generalization of the resulting AI.
+    </td>
   </tr>
   <tr>
-    <td><a href="tutorials/tutorial_2_importing_data.ipynb">
+    <td><a href="tutorials/tutorial_2_training_with_your_own_data.ipynb">
     Tutorial 2: 
     </a></td>
-    <td> <b>Finding scaffolds</b> - In this tutorial we ...</td>
+    <td> <b>Finding scaffolds</b> - In this tutorial we ...
+    Augment your data, train AI, evaluate
+    </td>
   </tr>
   <tr>
-    <td><a href="tutorials/tutorial_3_augmenting_data.ipynb">
+    <td><a href="tutorials/tutorial_3_training_with_existing_data.ipynb">
     Tutorial 3: 
     </a></td>
-    <td> <b>Generating analytics</b> - In this tutorial we ...</td>
+    <td> <b>Generating analytics</b> - In this tutorial we ...
+    Augment published data, train AI, evaluate. 
+    </td>
   </tr>
-  <tr>
-    <td><a href="tutorials/use_case_1_Predictive.ipynb">
-    Tutorial 4: 
+    <tr>
+    <td><a href="tutorials/tutorial_4_Using_existing_models.ipynb">
+    Tutorial 3: 
     </a></td>
-    <td> <b>New tags</b> - In this tutorial we ...</td>
-  </tr> 
+    <td> <b>Generating analytics</b> - In this tutorial we ...
+    Augment data, evaluate with pre-trained AI. Emphasise model should be trained on data similar to evaluation. 
+    </td>
+  </tr>
+
   <tr>
-    <td><a href="tutorials/use_case_2_Classification.ipynb">
+    <td><a href="tutorials/tutorial_5_transfer_learning.ipynb">
     Tutorial 5: 
     </a></td>
     <td> <b>Into the flow</b> - In this tutorial we ...
+    Import data, augment, train AI. Import own data, augment, train AI more, evaluate. Emphasise that data should be similar.
+    </td>
   </tr>
 </tbody>
 </table>
