@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   sparcats:
-    image: simcore/services/comp/sparcats:0.1.0
+    image: simcore/services/comp/sparcats:0.1.1
     volumes:
       - ${PWD}/validation/input:/input
       - ${PWD}/validation/output:/output

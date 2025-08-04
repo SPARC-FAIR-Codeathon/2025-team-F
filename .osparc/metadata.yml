@@ -2,7 +2,7 @@ name: SPARCats
 key: simcore/services/comp/sparcats
 type: computational
 integration-version: 1.0.0
-version: 0.1.0
+version: 0.1.1
 description: Generate augmented time series physiological data based on data from the SPARC Data Portal.
 contact: oath399@aucklanduni.ac.nz
 thumbnail: https://github.com/ITISFoundation/osparc-assets/blob/cb43207b6be2f4311c93cd963538d5718b41a023/assets/default-thumbnail-cookiecutter-osparc-service.png?raw=true
