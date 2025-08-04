@@ -1,10 +1,4 @@
 FROM python:3.10 as base
-#
-#  USAGE:
-#     cd services/sparcats
-#     docker build -f Dockerfile -t sparcats:prod --target production ../../
-#     docker run sparcats:prod
-#
 
 LABEL maintainer=OmkarAthavale
 

@@ -9,12 +9,12 @@ export VCS_REF    := $(shell git rev-parse --short HEAD 2> /dev/null || echo unv
 export VCS_STATUS := $(if $(shell git status -s 2> /dev/null || echo unversioned repo),'modified/untracked','clean')
 export BUILD_DATE := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-export DOCKER_IMAGE_NAME ?= sparcats
+export DOCKER_IMAGE_NAME ?= sparcatsfix
 export DOCKER_IMAGE_TAG ?= 0.1.1
 
 OSPARC_DIR:=$(CURDIR)/.osparc
 
-APP_NAME := sparcats
+APP_NAME := sparcatsfix
 
 # Builds new service version ----------------------------------------------------------------------------
 

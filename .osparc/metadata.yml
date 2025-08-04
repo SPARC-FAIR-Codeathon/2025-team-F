@@ -1,5 +1,5 @@
 name: SPARCats
-key: simcore/services/comp/sparcats
+key: simcore/services/comp/sparcatsfix
 type: computational
 integration-version: 1.0.0
 version: 0.1.1
