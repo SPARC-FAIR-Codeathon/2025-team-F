@@ -10,6 +10,9 @@ authors:
   - name: Omkar Athavale
     email: oath399@aucklanduni.ac.nz
     affiliation: University of Auckland
+  - name: Javier Garcia Ordonez
+    email: ordonez@zmt.swiss
+    affiliation: ITIS Foundation & ZMT Zurich MedTech AG
 inputs:
   source_data_files:
     displayOrder: 1
