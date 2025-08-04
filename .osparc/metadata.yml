@@ -13,13 +13,14 @@ authors:
 inputs:
   input_1:
     displayOrder: 1
-    label: Target Organ/Location
+    label: Target Organ
     description: Organ from which signal is measured
     type: ref_contentSchema
     contentSchema: 
       title: Organ
-      default: Heart (ECG)
-      enum: [Heart (ECG), Vagus nerve, Nodose ganglion]
+      default: Heart
+      type: array
+      enum: [Heart, Vagus nerve, Nodose ganglion]
   input_2:
     displayOrder: 2
     label: Species
@@ -28,7 +29,7 @@ inputs:
     contentSchema: 
       title: Species
       default: Mouse
-      enum: [Mouse, Rat, Human, Pig]
+      enum: [Mouse, Rat, Human, Pig, Dog, Cat]
   input_3:
     displayOrder: 3
     label: Gender
@@ -38,34 +39,53 @@ inputs:
       title: Gender
       default: Both
       enum: [Male, Female, Both]
-  input_4:
+  expt_approach:
     displayOrder: 4
+    label: Experimental Approach
+    description: The type of data
+    type: ref_contentSchema
+    contentSchema: 
+      title: Experimental Approach
+      default: Electrophysiology
+      enum: [Electrophysiology, Physiology]
+  input_4:
+    displayOrder: 5
     label: Number of Augmented Data Series
     description: How many augmented data series per input data series
     type: number
     # allowed input / output types are "string", "number", "bool", "data:*/*"
     defaultValue: 5
-  input_5:
-    displayOrder: 5
-    label: Scaling
-    description: Apply Scaling augmentation
-    type: string
-  input_6:
+  drift_aug:
     displayOrder: 6
-    label: Jitter
-    description: Apply Jitter augmentation
+    label: Drift
+    description: Apply Drift augmentation
     type: string
-  input_7:
+  noise_aug:
     displayOrder: 7
-    label: Rotation
-    description: Apply Rotation augmentation
+    label: Noise
+    description: Apply Noise augmentation
     type: string
-  input_8:
+  warp_aug:
     displayOrder: 8
-    label: Time Warp
-    description: Apply Time Warp augmentation
+    label: Warp
+    description: Apply Warp augmentation - set parameters below
     type: string
-  
+  warp_ratio:
+    displayOrder: 9
+    label: Warp ratio
+    description: Time Warp ratio
+    type: number
+  warp_speed:
+    displayOrder: 10
+    label: Warp speed
+    description: Apply Time Warp augmentation
+    type: number
+  warp_prob:
+    displayOrder: 11
+    label: Warp probablity
+    description: Apply Time Warp augmentation
+    type: number
+
 outputs:
   output_1:
     displayOrder: 1
