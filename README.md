@@ -4,7 +4,7 @@ A o<sup>2</sup>S<sup>2</sup>PARC tool to accellerate data discovery by AI bring 
 
 ![alt text][logo]
 
-[logo]: https://github.com/SPARC-FAIR-Codeathon/2025-team-F/res/sparcats.jpg
+[logo]: https://github.com/SPARC-FAIR-Codeathon/2025-team-F/blob/res/sparcats.jpg
 
 ![Python 3](https://img.shields.io/badge/Python->=3.9-blue)
 [![Contributors][contributors-shield]][contributors-url]
