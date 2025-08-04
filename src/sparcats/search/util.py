@@ -21,16 +21,35 @@ def get_algolia_response(datasetId):
         if response.status_code == 200:
             return response.json()
         else:
-            print(f"Request failed with status code: {response.status_code}")
-            print(f"Response text: {response.text}")
+            #print(f"[Warning]: Request failed with status code: {response.status_code} for datasetId: {datasetId}")
             return None
 
     except requests.exceptions.RequestException as e:
-        print(f"An error occurred: {e}")
+        print(f"[Error] An error occurred while fetching data for datasetId [{datasetId}]. "
+              f"Below are the details of the error: {e}")
 
 
 def traverse_list_of_dict(val, key="keyword"):
     output = []
     for i in val:
-        output.append(i[key].lower())
+        if key in i.keys():  # Added to ignore tags that are not required.
+            if isinstance(i[key], dict):
+                output.append(i[key])
+            else:
+                output.append(i[key].lower())
     return output
+
+
+# List of tags to be checked in hierarchy
+def tags_exists(val, tags):
+    key = tags.pop(0)
+    if key in val.keys():
+        if len(tags) > 0:
+            if isinstance(val[key], dict):
+                return tags_exists(val[key], tags)
+            elif isinstance(val[key], list):
+                return tags_exists(val[key][0], tags)  # Only checking one element of the list. Assumption all items under the tag will have similar tags.
+        return True
+    else:
+        return False
+

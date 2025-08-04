@@ -1,21 +1,13 @@
-# Search tool
-# - Search dataset with Experimental Approach. []
-# 	- Filter it by organ, sex (Male, Female, & Both)
-#
-# - Parse each manifest file
-# - Separate out each file we need -> We only certain file types (xlsx, csv) - for now
-# 	- Filter out certain keywords.
-
-from hurry.filesize import size
 from sparc_me import Dataset_Api
 
-from src.sparcats.search.util import get_algolia_response, traverse_list_of_dict
+from src.sparcats.search.util import get_algolia_response, tags_exists, traverse_list_of_dict
 
 
-def get_valid_datasets(exp_approach="electrophysiology", species="mouse", organ="vagus nerve", sex="male"):
+# Warning: May take a minute or two to run, as well of the datasets in pensieve are being checked.
+def get_valid_datasets(exp_approach="electrophysiology", species="mouse", organ="vagus nerve", sex="both"):
     exp_approach = exp_approach.lower()
 
-    # Possible update - match lists
+    # (Future) TODO: - match lists i.e. multiple species and organs.
     #if species is None:
     #    animal = ["mouse"]
     #if organ is None:
@@ -31,46 +23,38 @@ def get_valid_datasets(exp_approach="electrophysiology", species="mouse", organ=
 
     for i in all_datasets:
         response = get_algolia_response(i["id"])
-        #response_example = get_algolia_response(375)
 
         if response is not None:
-            if "modalities" in response["item"].keys():
+            if tags_exists(response, ["item", "modalities", "keyword"]):
                 if exp_approach in traverse_list_of_dict(response["item"]["modalities"], "keyword"):
                     species_match, organ_match, sex_match = False, False, False
 
-                    if species in traverse_list_of_dict(response["organisms"]["subject"]["species"], "name"):
+                    # Double traversing as the tag contains lists of dictionaries within a list of dictionaries.
+                    # Each species have their own list.
+                    species_tag = []
+                    if tags_exists(response, ["organisms", "subject", "species", "name"]):
+                        species_tag = traverse_list_of_dict(traverse_list_of_dict(response["organisms"]["subject"],
+                                                                                  "species"), "name")
+
+                    if species in species_tag:
                         species_match = True
-                    if species in traverse_list_of_dict(response["organisms"]["subject"]["species"], "name"):
-                        species_match = True
-                    if sex in traverse_list_of_dict(response["attributes"]["subject"]["sex"], "value"):
-                        sex_match = True
+                    if (tags_exists(response, ["anatomy", "organ", "name"])
+                            and organ in traverse_list_of_dict(response["anatomy"]["organ"], "name")):
+                        organ_match = True
+                    if tags_exists(response, ["attributes", "subject", "sex", "value"]):
+                        sex_tags = traverse_list_of_dict(response["attributes"]["subject"]["sex"], "value")
+                        if sex == "both" and "male" in sex_tags and "female" in sex_tags:
+                            sex_match = True
+                        elif sex in sex_tags:
+                            sex_match = True
 
                     if species_match and organ_match and sex_match:
-                        exact_dataset.append({'Id': i["id"],
-                                                  'Source Dataset Id': i["sourceDatasetId"],
-                                                  'Name': i["name"].strip(),
-                                                  'Description': i['description'].strip(),
-                                                  'Tags': i["tags"],
-                                                  'Version': str(i["version"]).strip(),
-                                                  "Dataset Size": size(i["size"]),
-                                                  "DOI": i["doi"].strip()})
+                        exact_dataset.append(i)
 
                     elif species_match or organ_match or sex_match:
-                        relevant_datasets.append({'Id': i["id"],
-                                                  'Source Dataset Id': i["sourceDatasetId"],
-                                                  'Name': i["name"].strip(),
-                                                  'Description': i['description'].strip(),
-                                                  'Tags': i["tags"],
-                                                  'Version': str(i["version"]).strip(),
-                                                  "Dataset Size": size(i["size"]),
-                                                  "DOI": i["doi"].strip()})
+                        relevant_datasets.append(i)
 
-
-
-            #if exp_approach in
-            # if "item" in response.keys() and "modalities" in response["item"].keys(): - Seems like an extra check.
-
-        print(i["id"])
+    return exact_dataset, relevant_datasets
 
 
 if __name__ == "__main__":
