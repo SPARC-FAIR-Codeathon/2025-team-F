@@ -1,6 +1,6 @@
 import requests
 
-algolia_app_key = "97dd61c1688581bfee8f74e7e4739758"
+algolia_app_key = "97dd61c1688581bfee8f74e7e4739758" # The key might expire. May need another key.
 algolia_app_id = "04WW1V1O0F"
 
 
