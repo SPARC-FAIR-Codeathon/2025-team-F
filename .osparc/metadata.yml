@@ -11,16 +11,17 @@ authors:
     email: oath399@aucklanduni.ac.nz
     affiliation: University of Auckland
 inputs:
-  input_1:
+  exp_approach:
     displayOrder: 1
-    label: input_1_label
-    description: The input 1 description
-    type: string
-    # allowed input / output types are "string", "number", "bool", "data:*/*"
-    defaultValue: some_value(optional)
-    fileToKeyMap:
-      somefilename.ext: input_1
-  input_2:
+    label: Experimental approach
+    description: How was the data measured, not all are available
+    type: ref_contentSchema
+    contentSchema:
+      title: Experimental approach
+      default: electrophysiology
+      type: string    # allowed input / output types are "string", "number", "bool", "data:*/*"
+      enum: [electrophysiology, physiology]
+  species:
     displayOrder: 2
     label: input_2_label
     description: The input 2 description
@@ -29,7 +30,7 @@ inputs:
     defaultValue: some_value(optional)
     fileToKeyMap:
       somefilename.ext: input_2
-  input_3:
+  sex:
     displayOrder: 3
     label: input_3_label
     description: The input 3 description
@@ -87,10 +88,15 @@ inputs:
 outputs:
   output_1:
     displayOrder: 1
-    label: output_1_label
-    description: The input 1 description
-    type: string
-    # allowed input / output types are "string", "number", "bool", "data:*/*"
+    label: Exact results
+    description: Exact matches to search
+    type: data:*/*
     fileToKeyMap:
-      somefilename.ext: output_1
-  
+      output_exact.json: output_1
+  output_2:
+    displayOrder: 1
+    label: Relevant results
+    description: Inexact matches to search
+    type: data:*/*
+    fileToKeyMap:
+      output_relevant.json: output_2
