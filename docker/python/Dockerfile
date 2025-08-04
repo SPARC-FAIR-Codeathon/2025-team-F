@@ -79,6 +79,7 @@ WORKDIR /home/${SC_USER_NAME}
 #RUN apt-get update \
 # && apt-get -y install --no-install-recommends \
 # && rm -rf /var/lib/apt/lists/*
+RUN pip install scipy tsaug pandas
 # ------------------------------------------------------------------------------------
 
 # copy docker bootup scripts
