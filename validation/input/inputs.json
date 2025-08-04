@@ -1,10 +1,13 @@
 {
-    "input_1": "Nodose ganglion",
-    "input_2": "Rat",
-    "input_3": "Female",
-    "input_4": 8,
-    "input_5": false,
-    "input_6": true,
-    "input_7": true,
-    "input_8": false
+    "source_data_files": ["/input/test.csv"],
+    "nb_signals": 8,
+    "drift_aug": true,
+    "noise_aug": true,
+    "warp_aug": true,
+    "warp_ratio": 3.0,
+    "warp_prob": 0.6,
+    "warp_speed": 6,
+    "drift_prob": 0.8,
+    "noise_scale": 0.05,
+    "max_drift": 0.2
 }

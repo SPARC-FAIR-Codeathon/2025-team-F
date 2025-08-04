@@ -11,77 +11,64 @@ authors:
     email: oath399@aucklanduni.ac.nz
     affiliation: University of Auckland
 inputs:
-  input_1:
+  source_data_files:
     displayOrder: 1
-    label: Target Organ
-    description: Organ from which signal is measured
+    label: Input Data Series File
+    description: Time series data, one series per column
     type: ref_contentSchema
     contentSchema: 
-      title: Organ
-      default: Heart
-      type: array
-      enum: [Heart, Vagus nerve, Nodose ganglion]
-  input_2:
-    displayOrder: 2
-    label: Species
-    description: Species from which source data were measured
-    type: ref_contentSchema
-    contentSchema: 
-      title: Species
-      default: Mouse
-      enum: [Mouse, Rat, Human, Pig, Dog, Cat]
-  input_3:
-    displayOrder: 3
-    label: Gender
-    description: Gender of subjects for source data
-    type: ref_contentSchema
-    contentSchema: 
-      title: Gender
-      default: Both
-      enum: [Male, Female, Both]
-  expt_approach:
-    displayOrder: 4
-    label: Experimental Approach
-    description: The type of data
-    type: ref_contentSchema
-    contentSchema: 
-      title: Experimental Approach
-      default: Electrophysiology
-      enum: [Electrophysiology, Physiology]
-  input_4:
+      title: Input Data Series File
+      default: "input/test.csv"
+      type: array  
+  nb_signals:
     displayOrder: 5
     label: Number of Augmented Data Series
     description: How many augmented data series per input data series
     type: number
-    # allowed input / output types are "string", "number", "bool", "data:*/*"
+    # allowed input / output types are "string", "number", "boolean", "data:*/*"
     defaultValue: 5
   drift_aug:
     displayOrder: 6
     label: Drift
     description: Apply Drift augmentation
-    type: string
-  noise_aug:
+    type: boolean
+  max_drift:
     displayOrder: 7
+    label: Maximum drift
+    description: How much the signal drifts by, at most
+    type: number
+  drift_prob:
+    displayOrder: 8
+    label: Drift probability
+    description: Probability of signal drift
+    type: number
+  noise_aug:
+    displayOrder: 9
     label: Noise
     description: Apply Noise augmentation
-    type: string
+    type: boolean
+  noise_scale:
+    displayOrder: 10
+    label: Noise scale
+    description: Scale of noise relative to signal
+    type: number
   warp_aug:
-    displayOrder: 8
+    displayOrder: 11
     label: Warp
     description: Apply Warp augmentation - set parameters below
-    type: string
+    type: boolean
   warp_ratio:
-    displayOrder: 9
+    displayOrder: 12
     label: Warp ratio
     description: Time Warp ratio
-    type: number
+    type: boolean
   warp_speed:
-    displayOrder: 10
+    displayOrder: 13
     label: Warp speed
     description: Apply Time Warp augmentation
     type: number
   warp_prob:
-    displayOrder: 11
+    displayOrder: 14
     label: Warp probablity
     description: Apply Time Warp augmentation
     type: number
@@ -93,18 +80,5 @@ outputs:
     description: Output data timestamps
     type: data:*/*
     fileToKeyMap:
-      config.json: output_1
-  output_2:
-    displayOrder: 2
-    label: Original Data
-    description: Original Data, one column per series
-    type: data:*/*
-    fileToKeyMap:
-      config.json: output_2
-  output_3:
-    displayOrder: 3
-    label: Augmented Data
-    description: Augmented Data, one column per series
-    type: data:*/*
-    fileToKeyMap:
-      config.json: output_3
+      augmented_data.csv: output_1
+
