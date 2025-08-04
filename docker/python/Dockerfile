@@ -24,42 +24,6 @@ RUN apt-get update \
 # + /build             WORKDIR
 #
 
-FROM base as build
-
-ENV SC_BUILD_TARGET build
-
-# ------------------------------------------------------------------------------------
-#TODO:
-# uncomment and adapt if build dependencies shall be installed
-#RUN apt-get update \
-# && apt-get -y install --no-install-recommends \
-# gcc \
-# git \
-# && rm -rf /var/lib/apt/lists/*
-
-# uncomment and adapt if python necessary
-#RUN $SC_PIP install --upgrade pip wheel setuptools
-# ------------------------------------------------------------------------------------
-
-WORKDIR /build
-# defines the output of the build
-RUN mkdir --parents /build/bin
-# copy src code
-COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} src/sparcats src/sparcats
-# ------------------------------------------------------------------------------------
-#TODO:
-# uncomment and adapt if build steps are necessary
-# RUN cp -R src/sparcats/* /build/bin
-# ------------------------------------------------------------------------------------
-
-# --------------------------Production stage -------------------
-# Final cleanup up to reduce image size and startup setup
-# Runs as ${SC_USER_NAME} (non-root user)
-#
-#  + /home/${SC_USER_NAME}     $HOME = WORKDIR
-#    + sparcats [${SC_USER_NAME}:${SC_USER_NAME}]
-#    + docker [${SC_USER_NAME}:${SC_USER_NAME}]
-#    + service.cli [${SC_USER_NAME}:${SC_USER_NAME}]
 #
 FROM base as production
 
@@ -82,15 +46,14 @@ WORKDIR /home/${SC_USER_NAME}
 RUN pip install scipy tsaug pandas
 # ------------------------------------------------------------------------------------
 
+# copy source code
+COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} src/sparcats src/sparcats
 # copy docker bootup scripts
 COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} docker/python/*.sh docker/
 # copy simcore service cli
 COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} service.cli/ service.cli/
 # necessary to be able to call run directly without sh in front
 ENV PATH="/home/${SC_USER_NAME}/service.cli:${PATH}"
-
-# copy binaries from build
-COPY --from=build --chown=${SC_USER_NAME}:${SC_USER_NAME} /build/bin src/sparcats
 
 # ------------------------------------------------------------------------------------
 #TODO:
