@@ -2,6 +2,10 @@
 
 A o<sup>2</sup>S<sup>2</sup>PARC tool to accellerate data discovery by AI bring take breakthroughs in the laboratory into healthcare. SPARCats generate synthetic augmented physiological data available through the SPARC Data Portal to improve AI training. 
 
+![alt text][logo]
+
+[logo]: https://github.com/SPARC-FAIR-Codeathon/2025-team-F/res/sparcats.jpg
+
 ![Python 3](https://img.shields.io/badge/Python->=3.9-blue)
 [![Contributors][contributors-shield]][contributors-url]
 [![Stargazers][stars-shield]][stars-url]
