@@ -62,9 +62,12 @@ AI can produce powerful tools for predicting and analysing a wide range of physi
 
 ## Our solution - (SPARCats)
 We have developed a robust SPARC augmented timeseries (SPARCats) toolkit that runs within o<sup>2</sup>S<sup>2</sup>PARC to generate synthetic datasets. This toolkit empowers researchers to easily create pipelines that incorporate novel or published data as augmented training data for AI models. SPARCats includes a number of cookie-cutter services:
-- **Search** - The search feature enables the user to search for related datasets by filtering on experiment type, species, sex, and organ. With a little further tweaking, this module can become a become a general purpose sparc portal search service embedded within o<sup>2</sup>S<sup>2</sup>PARC. See tutorial #TODO
-- **Augment** - The augment feature enables the user to perform a configurable data augmentation through the methods of [TODO]. The resulting synthetic dataset can be saved or piped directly into training an AI model. See tutorial #TODO
+- **Search** - The search feature enables the user to search for related datasets by filtering on experiment type, species, sex, and organ. With a little further tweaking, this module can become a become a general purpose sparc portal search service embedded within o<sup>2</sup>S<sup>2</sup>PARC. See tutorial 2
+- **Augment** - The augment feature enables the user to perform a configurable data augmentation through the time warping, adding noise and applying a drift. The resulting synthetic dataset can be saved or piped directly into training an AI model. See tutorial #TODO
 - **Split data** - The split data feature allows for the user to perform a configurable test/train data split for training. See tutorial #TODO
+- **Download** - 
+
+- TUTORIALS - 
 - **Train** - The train feature enables the user to pass data (usually augmented data) into a specific model for training. The resulting model can be saved, or used directly to make predictions on real data. See tutorial #TODO
 - **Predict** - The predict feature enables the user to pass real data into a trained AI model to generate predictions and outputs to evaluate. See tutorial #TODO
 
@@ -130,23 +133,15 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
     </td>
   </tr>
   <tr>
-    <td><a href="tutorials/tutorial_2_training_with_your_own_data.ipynb">
+    <td><a href="tutorials/tutorial_2_training_with_existing_data.ipynb">
     Tutorial 2: 
-    </a></td>
-    <td> <b>Finding scaffolds</b> - In this tutorial we ...
-    Augment your data, train AI, evaluate
-    </td>
-  </tr>
-  <tr>
-    <td><a href="tutorials/tutorial_3_training_with_existing_data.ipynb">
-    Tutorial 3: 
     </a></td>
     <td> <b>Generating analytics</b> - In this tutorial we ...
     Augment published data, train AI, evaluate. 
     </td>
   </tr>
     <tr>
-    <td><a href="tutorials/tutorial_4_Using_existing_models.ipynb">
+    <td><a href="tutorials/tutorial_3_Using_existing_models.ipynb">
     Tutorial 3: 
     </a></td>
     <td> <b>Generating analytics</b> - In this tutorial we ...
@@ -154,8 +149,8 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
     </td>
   </tr>
   <tr>
-    <td><a href="tutorials/tutorial_5_transfer_learning.ipynb">
-    Tutorial 5: 
+    <td><a href="tutorials/tutorial_4_transfer_learning.ipynb">
+    Tutorial 4: 
     </a></td>
     <td> <b>Into the flow</b> - In this tutorial we ...
     Import data, augment, train AI. Import own data, augment, train AI more, evaluate. Emphasise that data should be similar.
