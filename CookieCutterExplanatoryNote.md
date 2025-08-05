@@ -1,0 +1,2 @@
+Explanatory note for judges
+We hoped to have these python runner services deployed as their own services via the cookiecutter method. Unfortunately, this was not possible during the time constraints of the Codeathon. The benefit of cookie cutter services is that they would allow users to fill out a form to input informatio rather than upload JSON file. In lieu of the depoyed cookie cutter services we have functioning, configured Python Runner services and the following schematics.
