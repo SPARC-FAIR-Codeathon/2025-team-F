@@ -2,7 +2,7 @@
 A o<sup>2</sup>S<sup>2</sup>PARC tool to accelerate data discovery by AI and bring breakthroughs in the laboratory into healthcare. SPARCats generates synthetic augmented physiological data available through the SPARC Data Portal to improve AI training. 
 
 ![alt text][logo]
-[logo]: https://github.com/SPARC-FAIR-Codeathon/2025-team-F/blob/README/res/sparcats.jpg
+[logo]: https://github.com/SPARC-FAIR-Codeathon/2025-team-F/tree/README/res/sparcats.jpg
 
 ![Python 3](https://img.shields.io/badge/Python->=3.9-blue)
 [![Contributors][contributors-shield]][contributors-url]
@@ -62,15 +62,14 @@ AI can produce powerful tools for predicting and analysing a wide range of physi
 
 ## Our solution - (SPARCats)
 We have developed a robust SPARC augmented timeseries (SPARCats) toolkit that runs within o<sup>2</sup>S<sup>2</sup>PARC to generate synthetic datasets. This toolkit empowers researchers to easily create pipelines that incorporate novel or published data as augmented training data for AI models. SPARCats includes a number of cookie-cutter services:
-- **Search** - The search feature enables the user to search for related datasets by filtering on experiment type, species, sex, and organ. With a little further tweaking, this module can become a become a general purpose sparc portal search service embedded within o<sup>2</sup>S<sup>2</sup>PARC. See tutorial 2
-- **Augment** - The augment feature enables the user to perform a configurable data augmentation through the time warping, adding noise and applying a drift. The resulting synthetic dataset can be saved or piped directly into training an AI model. See tutorial #TODO
-- **Split data** - The split data feature allows for the user to perform a configurable test/train data split for training. See tutorial #TODO
-- **Download** - 
+- **Search** - The search feature enables the user to search for related datasets by filtering on experiment type, species, sex, and organ. With a little further tweaking, this module can become a become a general purpose sparc portal search service embedded within o<sup>2</sup>S<sup>2</sup>PARC. 
+- **Augment** - The augment feature enables the user to perform a configurable data augmentation through the time warping, adding noise and applying a drift. The resulting synthetic dataset can be saved or piped directly into training an AI model. 
+- **Split data** - The split data feature allows for the user to perform a configurable test/train data split for training. 
+- **Download** - The download service allows for the user to download their data. 
 
-- TUTORIALS - 
-- **Train** - The train feature enables the user to pass data (usually augmented data) into a specific model for training. The resulting model can be saved, or used directly to make predictions on real data. See tutorial #TODO
-- **Predict** - The predict feature enables the user to pass real data into a trained AI model to generate predictions and outputs to evaluate. See tutorial #TODO
-
+SPARCats includes support for more complex steps in the AI development process through modular example code: 
+- **Train** - Showcases the training process, enables the user to pass data (usually augmented data) into a specific model for training. The resulting model can be saved, or used directly to make predictions on real data.
+- **Predict** - Showcases the prediction process, enables the user to pass real data into a trained AI model to generate predictions and outputs to evaluate. 
 
 SPARCats has been developed to adhere to and enhance the [FAIR](https://www.nature.com/articles/sdata201618) core to SPARC.
 - **F**indable - The SPARCats search tool directly enhances the findability of data contained within SPARC. 
@@ -118,7 +117,7 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
 <table>
 <thead>
   <tr>
-    <th> Tutorial *TODO*</th>
+    <th> Tutorial </th>
     <th> Description</th>
   </tr>
 </thead>
@@ -127,16 +126,14 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
     <td><a href="tutorials/tutorial_1_setting_up.ipynb">
     Tutorial 1: 
     </a></td>
-    <td> <b>Getting started</b> - In this tutorial we ...
-    Absolute basics for no code new to osparc
-    Show how data augmentation improves performance & generalization of the resulting AI.
+    <td> <b>Getting started</b> - In this tutorial we show the basic set up process to create your first workflow in o<sup>2</sup>S<sup>2</sup>PARC using SPARCats and demonstrate how data augmentation improves performance & generalization of the resulting AI.
     </td>
   </tr>
   <tr>
     <td><a href="tutorials/tutorial_2_training_with_existing_data.ipynb">
     Tutorial 2: 
     </a></td>
-    <td> <b>Generating analytics</b> - In this tutorial we ...
+    <td> <b>Generating analytics</b> - In this tutorial we use the SPARCats search service to collect 
     Augment published data, train AI, evaluate. 
     </td>
   </tr>
@@ -167,7 +164,7 @@ To report an issue or suggest a new feature, please use the [issues page](https:
 Please check existing issues before submitting a new one.
 
 ## Contributing
-To contribute: fork this repository and submit a pull request. Before submitting a pull request, please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md). If you found this tool helpful, please add a GitHub Star to support further developments! #TODO
+To contribute: fork this repository and submit a pull request. Before submitting a pull request, please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md). If you found this tool helpful, please add a GitHub Star to support further developments! 
 
 ### Project structure
 * `/src/` - Directory of sparcats python module.
