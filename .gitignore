@@ -21,7 +21,6 @@ docker-compose.yml
 # validation folder
 !validation/**/*
 # docker ignore
-!.dockerignore
 # git ignore
 !.gitignore
 
