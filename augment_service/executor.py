@@ -4,13 +4,7 @@ import warnings
 import pathlib
 import os
 
-# In osparc, INPUT_FOLDER and OUTPUT_FOLDER are environment variables 
-# that map to the service input/output ports, respectively
-input_dir = os.environ["INPUT_FOLDER"] 
-output_dir = os.environ["OUTPUT_FOLDER"]
-input_data = augment.parse_json(input_dir + "/input_form.json")
-print("?????")
-print(input_data)
+input_data = augment.parse_json("inputs/input_form.json")
 
 nb_signals = input_data["nb_signals"]  # Number of augmented signals to create
 
@@ -29,3 +23,4 @@ augmenter = augment.create_augmenter(arr_augmenters)
 
 augmented_data = augment.generate_augmented_data(data, augmenter, nb_signals)
 augment.save_to_csv(augmented_data, 1, output_dir + "augmented_data.csv")
+
