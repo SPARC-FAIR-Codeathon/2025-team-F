@@ -89,29 +89,6 @@ The tools offered by SPARCats extends the capabilities of o<sup>2</sup>S<sup>2</
 The **Search** and **Augment** modules within SPARCats enables users to easily find relevant data to include in their AI project. The augmentation tools offered enable published data to be readily used as training data for AI models, increasing the value of existing datasets. 
 
 
-## Setting up sparcats
-### Pre-requisites 
-- [Git](https://git-scm.com/)
-- Python versions:
-   - 3.9 *TODO*
-###  Installing via PyPI
-
-Here is the [link](https://pypi.org/project/sparcats/) to our project on PyPI *TODO*
-```
-pip install sparcats
-```
-### From source code
-#### Downloading source code
-Clone the sparcats repository from github, e.g.:
-```
-git clone git@github.com:SPARC-FAIR-codeathon/sparcats *TODO* 
-```
-
-### Installing dependencies
-```
-pip install requirements.txt *TODO*
-```
-
 ## Using sparcats
 Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC with little to node coding experience required. To demonstrate this and showcase the steps required to implement we have a series of tutorials and demo usecases: 
 
