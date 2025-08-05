@@ -4,7 +4,7 @@ import shutil
 import pandas as pd
 from sparc_me import Dataset_Api
 
-from sparcats.download.src.util import convert_cols_lower, save_csv_file, save_mat_file, save_xlsx_file
+from src.util import convert_cols_lower, save_csv_file, save_mat_file, save_xlsx_file
 
 dp = Dataset_Api()  # SPARC-ME object
 
@@ -34,7 +34,7 @@ def download_timeseries_files(datasetID, versionID=None, sex=None, out_path=None
     if versionID is None:
         versionID = dp.get_dataset_latest_version_number(datasetID)
     if out_path is None:
-        out_path = f"../outputs/"
+        out_path = f"../outputs//"
     if sex is not None and sex.lower() in ["Male", "Female"]:
         chk_sub_gender = True  # Check for separating out on the basis of sex.
 
@@ -46,10 +46,10 @@ def download_timeseries_files(datasetID, versionID=None, sex=None, out_path=None
 
     response = dp._download_file(datasetID, subjects_sheet)
     if response.status_code == 200:
-        save_xlsx_file(response.content, f"{out_path}{subjects_sheet.split['/'][1]}")
+        save_xlsx_file(response.content, f"{out_path}{subjects_sheet.split('/')[1]}")
 
-        df = convert_cols_lower(pd.read_excel(os.path.abspath(f"{out_path}{subjects_sheet.split['/'][1]}"), sheet_name="Sheet1"))
-        os.removedirs(f"{out_path}{subjects_sheet.split['/'][1]}")
+        df = convert_cols_lower(pd.read_excel(os.path.abspath(f"{out_path}{subjects_sheet.split('/')[1]}"), sheet_name="Sheet1"))
+        os.removedirs(f"{out_path}{subjects_sheet.split('/')[1]}")
 
         if chk_sub_gender:
             if "sex" in df.columns:
