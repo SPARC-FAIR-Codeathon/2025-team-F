@@ -30,7 +30,6 @@ def download_timeseries_files(datasetID, versionID=None, sex=None, out_path=None
     chk_sub_gender = False
     subject_files, subject_list, output = {}, [], ""
 
-
     if versionID is None:
         versionID = dp.get_dataset_latest_version_number(datasetID)
     if out_path is None:
@@ -46,10 +45,10 @@ def download_timeseries_files(datasetID, versionID=None, sex=None, out_path=None
 
     response = dp._download_file(datasetID, subjects_sheet)
     if response.status_code == 200:
-        save_xlsx_file(response.content, f"{out_path}{subjects_sheet.split['/'][1]}")
+        save_xlsx_file(response.content, os.path.abspath(f"{out_path}{subjects_sheet.split('/')[1]}"))
 
-        df = convert_cols_lower(pd.read_excel(os.path.abspath(f"{out_path}{subjects_sheet.split['/'][1]}"), sheet_name="Sheet1"))
-        os.removedirs(f"{out_path}{subjects_sheet.split['/'][1]}")
+        df = convert_cols_lower(pd.read_excel(os.path.abspath(f"{out_path}{subjects_sheet.split('/')[1]}"), sheet_name="Sheet1"))
+        os.remove(f"{out_path}{subjects_sheet.split('/')[1]}")
 
         if chk_sub_gender:
             if "sex" in df.columns:
@@ -70,7 +69,7 @@ def download_timeseries_files(datasetID, versionID=None, sex=None, out_path=None
                 print(f"Downloading all files for subject [{i}]")
                 for j in subject_list[i]:
                     response = dp._download_file(datasetID, j)
-                    print()
+                    #TODO: Feature to be added.
         else:
             print(f"Downloading first [{num_files_per_subject}] for first [{num_subjects}] subject(s).")
             for i in list(subject_files.keys())[0:num_subjects]:
@@ -149,3 +148,7 @@ def download_timeseries_files(datasetID, versionID=None, sex=None, out_path=None
                     f"[Warning] Downloading failed. Couldn't file from the server. Response code [{response.status_code}].")
 
     return output
+
+
+if __name__ == "__main__":
+    download_timeseries_files(375, out_path="../outputs/")
