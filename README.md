@@ -119,16 +119,14 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
     <td><a href="tutorials/tutorial_3_using_existing_models.ipynb">
     Tutorial 3: 
     </a></td>
-    <td> <b>Generating analytics</b> - In this tutorial we ...
-    Search existing data and use a pre-trained AI to predicit the signal.
+    <td> <b>Generating analytics</b> - In this tutorial we use an existing model
     </td>
   </tr>
   <tr>
     <td><a href="tutorials/tutorial_4_transfer_learning.ipynb">
     Tutorial 4: 
     </a></td>
-    <td> <b>Into the flow</b> - In this tutorial we ...
-    Search existing data, augment it, and use it to fine-tune an existing AI model.
+    <td> <b>Into the flow</b> - In this tutorial we use transfer learning by searching for existing data, augment it, and use it to fine-tune an existing AI model.
     </td>
   </tr>
 </tbody>
