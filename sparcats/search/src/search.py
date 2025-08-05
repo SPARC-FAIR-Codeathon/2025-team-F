@@ -5,8 +5,6 @@ from sparcats.search.src.util import get_algolia_response, traverse_list_of_dict
 
 dp = Dataset_Api()  # SPARC-ME object
 
-dp = Dataset_Api()  # SPARC-ME object
-
 
 # Warning: May take a minute or two to run, as well of the datasets in pensieve are being checked.
 def get_valid_datasets(exp_approach="electrophysiology", species="mouse", organ="vagus nerve", sex="both"):

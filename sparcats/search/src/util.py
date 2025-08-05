@@ -4,12 +4,11 @@ from dotenv import load_dotenv
 
 
 def get_algolia_response(datasetId):
-    load_dotenv(dotenv_path="../../config/.env")
     url = f"https://04WW1V1O0F-dsn.algolia.net/1/indexes/SPARC_pr/{datasetId}"
 
     custom_headers = {
-        'X-Algolia-API-Key': os.getenv("ALGOLIA_APP_KEY"),
-        'X-Algolia-Application-Id': os.getenv("ALGOLIA_APP_ID"),
+        'X-Algolia-API-Key': "97dd61c1688581bfee8f74e7e4739758",
+        'X-Algolia-Application-Id': "04WW1V1O0F",
         'Content-Type': 'application/json',
     }
 
