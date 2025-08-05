@@ -4,7 +4,7 @@ import shutil
 import pandas as pd
 from sparc_me import Dataset_Api
 
-from src.sparcats.search.util import convert_cols_lower, save_csv_file, save_mat_file, save_xlsx_file
+from sparcats.download.src.util import convert_cols_lower, save_csv_file, save_mat_file, save_xlsx_file
 
 dp = Dataset_Api()  # SPARC-ME object
 
@@ -28,12 +28,12 @@ def download_dataset(datasetID, versionID=None):
 def download_timeseries_files(datasetID, versionID=None, sex=None, out_path=None, primary_files_only=True,
                               num_subjects=1, num_files_per_subject=1):
     chk_sub_gender = False
-    subject_files, subject_list = {}, []
+    subject_files, subject_list, output = {}, [], ""
 
     if versionID is None:
         versionID = dp.get_dataset_latest_version_number(datasetID)
     if out_path is None:
-        out_path = f"../../../validation/output/{datasetID}/{versionID}/dataset/"
+        out_path = f"../outputs/"
     if sex is not None and sex.lower() in ["Male", "Female"]:
         chk_sub_gender = True  # Check for separating out on the basis of sex.
 
@@ -45,9 +45,10 @@ def download_timeseries_files(datasetID, versionID=None, sex=None, out_path=None
 
     response = dp._download_file(datasetID, subjects_sheet)
     if response.status_code == 200:
-        save_xlsx_file(response.content, f"{out_path}{subjects_sheet}")
+        save_xlsx_file(response.content, os.path.abspath(f"{out_path}{subjects_sheet.split('/')[1]}"))
 
-        df = convert_cols_lower(pd.read_excel(os.path.abspath(f"{out_path}{subjects_sheet}"), sheet_name="Sheet1"))
+        df = convert_cols_lower(pd.read_excel(os.path.abspath(f"{out_path}{subjects_sheet.split('/')[1]}"), sheet_name="Sheet1"))
+        os.remove(f"{out_path}{subjects_sheet.split('/')[1]}")
 
         if chk_sub_gender:
             if "sex" in df.columns:
@@ -68,7 +69,7 @@ def download_timeseries_files(datasetID, versionID=None, sex=None, out_path=None
                 print(f"Downloading all files for subject [{i}]")
                 for j in subject_list[i]:
                     response = dp._download_file(datasetID, j)
-                    print()
+                    #TODO: Feature to be added.
         else:
             print(f"Downloading first [{num_files_per_subject}] for first [{num_subjects}] subject(s).")
             for i in list(subject_files.keys())[0:num_subjects]:
@@ -79,10 +80,28 @@ def download_timeseries_files(datasetID, versionID=None, sex=None, out_path=None
                         filename = subject_files[i][j].split("/")[-1]
                         if filename.endswith(".xlsx"):
                             save_xlsx_file(response.content, f"{out_path}{filename}")
+
+                            if output == "":
+                                output = os.path.abspath(f"{out_path}{filename}")
+                            else:
+                                output = output + "," + os.path.abspath(f"{out_path}{filename}")
+
                         elif filename.endswith(".csv"):
                             save_csv_file(response.content, f"{out_path}{filename}")
+
+                            if output == "":
+                                output = os.path.abspath(f"{out_path}{filename}")
+                            else:
+                                output = output + "," + os.path.abspath(f"{out_path}{filename}")
+
                         elif filename.endswith(".mat"):
                             save_mat_file(response, f"{out_path}{filename}")
+
+                            if output == "":
+                                output = os.path.abspath(f"{out_path}{filename}")
+                            else:
+                                output = output + "," + os.path.abspath(f"{out_path}{filename}")
+
                         else:
                             print(f"[Warning] Unsupported file type [{filename}].")
                     else:
@@ -100,12 +119,36 @@ def download_timeseries_files(datasetID, versionID=None, sex=None, out_path=None
                 filename = subject_files[i].split("/")[-1]
                 if filename.endswith(".xlsx"):
                     save_xlsx_file(response.content, f"{out_path}{filename}")
+
+                    if output == "":
+                        output = os.path.abspath(f"{out_path}{filename}")
+                    else:
+                        output = output + "," + os.path.abspath(f"{out_path}{filename}")
+
                 elif filename.endswith(".csv"):
                     save_csv_file(response.content, f"{out_path}{filename}")
+
+                    if output == "":
+                        output = os.path.abspath(f"{out_path}{filename}")
+                    else:
+                        output = output + "," + os.path.abspath(f"{out_path}{filename}")
+
                 elif filename.endswith(".mat"):
                     save_mat_file(response, f"{out_path}{filename}")
+
+                    if output == "":
+                        output = os.path.abspath(f"{out_path}{filename}")
+                    else:
+                        output = output + "," + os.path.abspath(f"{out_path}{filename}")
+
                 else:
                     print(f"[Warning] Unsupported file type [{filename}].")
             else:
                 print(
                     f"[Warning] Downloading failed. Couldn't file from the server. Response code [{response.status_code}].")
+
+    return output
+
+
+if __name__ == "__main__":
+    download_timeseries_files(375, out_path="../outputs/")

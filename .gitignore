@@ -1,8 +1,7 @@
 ## Common.gitignore
 
-# output folders
+# outputs folders
 build/
-output/
 out/
 
 # temporary folders
@@ -22,7 +21,6 @@ docker-compose.yml
 # validation folder
 !validation/**/*
 # docker ignore
-!.dockerignore
 # git ignore
 !.gitignore
 

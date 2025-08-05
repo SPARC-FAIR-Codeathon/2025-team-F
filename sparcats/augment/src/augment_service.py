@@ -63,8 +63,8 @@ def save_to_csv(augmented_data, Fs, save_name):
     df = pd.DataFrame(augmented_data)
     df.insert(0, "Time", t)  # Add timestamps
 
-    root_path = pathlib.Path(__name__).resolve().parent.parents[1]
-    save_path = root_path / "validation/output" / save_name
+    #root_path = pathlib.Path(__name__).resolve().parent.parents[1]
+    save_path = save_name
 
     df.to_csv(save_path, index=False)  # Save to csv
 
@@ -132,7 +132,7 @@ def read_from_mat(file_path):
     return data
 
 
-def parse_json(json_file="../../validation/input/inputs.json"):
+def parse_json(json_file="input/inputs.json"):
     """Parse the information from the JSON file to get input arguments
 
     Args:
