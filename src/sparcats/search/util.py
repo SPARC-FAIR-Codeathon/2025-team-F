@@ -1,15 +1,16 @@
-import requests
+import os
 
-algolia_app_key = "97dd61c1688581bfee8f74e7e4739758"
-algolia_app_id = "04WW1V1O0F"
+import requests
+from dotenv import load_dotenv
 
 
 def get_algolia_response(datasetId):
+    load_dotenv(dotenv_path="../../config/.env")
     url = f"https://04WW1V1O0F-dsn.algolia.net/1/indexes/SPARC_pr/{datasetId}"
 
     custom_headers = {
-        'X-Algolia-API-Key': algolia_app_key,
-        'X-Algolia-Application-Id': algolia_app_id,
+        'X-Algolia-API-Key': os.getenv("ALGOLIA_APP_KEY"),
+        'X-Algolia-Application-Id': os.getenv("ALGOLIA_APP_ID"),
         'Content-Type': 'application/json',
     }
 
@@ -48,8 +49,8 @@ def tags_exists(val, tags):
             if isinstance(val[key], dict):
                 return tags_exists(val[key], tags)
             elif isinstance(val[key], list):
-                return tags_exists(val[key][0], tags)  # Only checking one element of the list. Assumption all items under the tag will have similar tags.
+                return tags_exists(val[key][0],
+                                   tags)  # Only checking one element of the list. Assumption all items under the tag will have similar tags.
         return True
     else:
         return False
-

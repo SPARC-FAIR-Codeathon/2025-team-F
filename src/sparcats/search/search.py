@@ -1,6 +1,10 @@
+import os
+
 from sparc_me import Dataset_Api
 
 from src.sparcats.search.util import get_algolia_response, tags_exists, traverse_list_of_dict
+
+dp = Dataset_Api()  # SPARC-ME object
 
 
 # Warning: May take a minute or two to run, as well of the datasets in pensieve are being checked.
@@ -17,9 +21,8 @@ def get_valid_datasets(exp_approach="electrophysiology", species="mouse", organ=
     organ = organ.lower()
     sex = sex.lower()
 
-    dp = Dataset_Api()  # SPARC-ME object
     all_datasets = dp.get_all_datasets_latest_version_pensieve()
-    exact_dataset, relevant_datasets = [], []
+    exact_dataset, relevant_datasets = "", ""
 
     for i in all_datasets:
         response = get_algolia_response(i["id"])
@@ -49,13 +52,15 @@ def get_valid_datasets(exp_approach="electrophysiology", species="mouse", organ=
                             sex_match = True
 
                     if species_match and organ_match and sex_match:
-                        exact_dataset.append(i)
+                        if exact_dataset == "":
+                            exact_dataset = str(i["id"])
+                        else:
+                            exact_dataset = exact_dataset + "," + str(i["id"])
 
                     elif species_match or organ_match or sex_match:
-                        relevant_datasets.append(i)
+                        if relevant_datasets == "":
+                            relevant_datasets = str(i["id"])
+                        else:
+                            relevant_datasets = relevant_datasets + "," + str(i["id"])
 
     return exact_dataset, relevant_datasets
-
-
-if __name__ == "__main__":
-    get_valid_datasets()
