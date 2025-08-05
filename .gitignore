@@ -1,6 +1,6 @@
 ## Common.gitignore
 
-# output folders
+# outputs folders
 build/
 out/
 
@@ -14,7 +14,7 @@ tmp/
 # vscode configuration
 .vscode
 
-# make output
+# make outputs
 pytest_*.xml
 .compose*
 docker-compose.yml
