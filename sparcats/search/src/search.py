@@ -1,5 +1,9 @@
+import os
+
 from sparc_me import Dataset_Api
 from sparcats.search.src.util import get_algolia_response, traverse_list_of_dict, tags_exists
+
+dp = Dataset_Api()  # SPARC-ME object
 
 dp = Dataset_Api()  # SPARC-ME object
 
