@@ -63,7 +63,7 @@ def save_to_csv(augmented_data, Fs, save_name):
     df = pd.DataFrame(augmented_data)
     df.insert(0, "Time", t)  # Add timestamps
 
-    //root_path = pathlib.Path(__name__).resolve().parent.parents[1]
+    #root_path = pathlib.Path(__name__).resolve().parent.parents[1]
     save_path = save_name
 
     df.to_csv(save_path, index=False)  # Save to csv
