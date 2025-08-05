@@ -66,6 +66,7 @@ We have developed a robust SPARC augmented timeseries (SPARCats) toolkit that ru
 - **Augment** - The augment feature enables the user to perform a configurable data augmentation through the time warping, adding noise and applying a drift. The resulting synthetic dataset can be saved or piped directly into training an AI model. 
 - **Split data** - The split data feature allows for the user to perform a configurable test/train data split for training. 
 - **Download** - The download service allows for the user to download their data. 
+An example workflow is available here: [SPARCats Example Workflow](https://osparc.io/#/study/29b52642-71a5-11f0-bae3-0242ac179953)
 
 SPARCats includes support for more complex steps in the AI development process through modular example code: 
 - **Train** - Showcases the training process, enables the user to pass data (usually augmented data) into a specific model for training. The resulting model can be saved, or used directly to make predictions on real data.
