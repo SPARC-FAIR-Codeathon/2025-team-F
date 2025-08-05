@@ -1,15 +1,19 @@
-import requests
+import io
+import os
+from fileinput import filename
 
-algolia_app_key = "97dd61c1688581bfee8f74e7e4739758"
-algolia_app_id = "04WW1V1O0F"
+import pandas as pd
+import requests
+from dotenv import load_dotenv
 
 
 def get_algolia_response(datasetId):
+    load_dotenv(dotenv_path="../../config/.env")
     url = f"https://04WW1V1O0F-dsn.algolia.net/1/indexes/SPARC_pr/{datasetId}"
 
     custom_headers = {
-        'X-Algolia-API-Key': algolia_app_key,
-        'X-Algolia-Application-Id': algolia_app_id,
+        'X-Algolia-API-Key': os.getenv("ALGOLIA_APP_KEY"),
+        'X-Algolia-Application-Id': os.getenv("ALGOLIA_APP_ID"),
         'Content-Type': 'application/json',
     }
 
@@ -48,8 +52,46 @@ def tags_exists(val, tags):
             if isinstance(val[key], dict):
                 return tags_exists(val[key], tags)
             elif isinstance(val[key], list):
-                return tags_exists(val[key][0], tags)  # Only checking one element of the list. Assumption all items under the tag will have similar tags.
+                return tags_exists(val[key][0],
+                                   tags)  # Only checking one element of the list. Assumption all items under the tag will have similar tags.
         return True
     else:
         return False
 
+
+# Convert all column names of a dataset to lower case.
+def convert_cols_lower(df):
+    df.rename(columns=str.lower)
+    return df
+
+
+def save_xlsx_file(content, out_path):
+    output_directory = os.path.dirname(out_path)
+    os.makedirs(output_directory, exist_ok=True)
+
+    with io.BytesIO(content) as buffer:
+        df = pd.io.excel.read_excel(buffer, engine='openpyxl')
+
+    df.dropna(axis=0, how='all', inplace=True)
+    writer = pd.ExcelWriter(out_path)
+    df.to_excel(writer)
+    writer.close()
+
+
+def save_csv_file(content, out_path):
+    output_directory = os.path.dirname(out_path)
+    os.makedirs(output_directory, exist_ok=True)
+
+    with io.BytesIO(content) as writer:
+        df = pd.read_csv(writer)
+    df.to_csv(out_path, sep=',', header=False, index=False)
+
+
+def save_mat_file(response, out_path):
+    output_directory = os.path.dirname(out_path)
+    os.makedirs(output_directory, exist_ok=True)
+
+    with open(out_path, 'wb') as writer:
+        for chunk in response.iter_content(chunk_size=8192):
+            if chunk:
+                writer.write(chunk)
