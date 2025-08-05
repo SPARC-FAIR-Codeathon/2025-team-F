@@ -77,7 +77,6 @@ SPARCats has been developed to adhere to and enhance the [FAIR](https://www.natu
 - **I**nteroperable - SPARCats incorporates many existing SPARC tools and can be incorporated into a wide range of workflows.
 - **R**eusable -  The configurability of the SPARCats cookie-cutter modules enables repeatable, sharable pipelines while encoraging the use of published data.  
 
-
 ## Impact
 SPARCats can be used to enhance understanding of the autonomic and peripheral nervous systems and accelerate the development of healthcare innovation. 
 
@@ -134,15 +133,15 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
     Tutorial 2: 
     </a></td>
     <td> <b>Generating analytics</b> - In this tutorial we use the SPARCats search service to collect 
-    Augment published data, train AI, evaluate. 
+    Search existing data, augment it and, train an AI model. 
     </td>
   </tr>
     <tr>
-    <td><a href="tutorials/tutorial_3_Using_existing_models.ipynb">
+    <td><a href="tutorials/tutorial_3_using_existing_models.ipynb">
     Tutorial 3: 
     </a></td>
     <td> <b>Generating analytics</b> - In this tutorial we ...
-    Augment data, evaluate with pre-trained AI. Emphasise model should be trained on data similar to evaluation. 
+    Search existing data and use a pre-trained AI to predicit the signal.
     </td>
   </tr>
   <tr>
@@ -150,7 +149,7 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
     Tutorial 4: 
     </a></td>
     <td> <b>Into the flow</b> - In this tutorial we ...
-    Import data, augment, train AI. Import own data, augment, train AI more, evaluate. Emphasise that data should be similar.
+    Search existing data, augment it, and use it to fine-tune an existing AI model.
     </td>
   </tr>
 </tbody>
