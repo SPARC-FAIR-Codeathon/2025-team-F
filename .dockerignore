@@ -35,7 +35,7 @@ tmp/
 # vscode configuration
 .vscode
 
-# make outputs
+# make output
 pytest_*.xml
 .compose*
 
