@@ -111,7 +111,7 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
     <td><a href="tutorials/tutorial_2_training_with_existing_data.ipynb">
     Tutorial 2: 
     </a></td>
-    <td> <b>Generating analytics</b> - In this tutorial we use the SPARCats search service to collect 
+    <td> <b>Augmenting SPARC data</b> - In this tutorial we use the SPARCats search service to collect 
     Search existing data, augment it and, train an AI model. 
     </td>
   </tr>
@@ -119,14 +119,14 @@ Sparcats has been developed to be used within o<sup>2</sup>S<sup>2</sup>PARC wit
     <td><a href="tutorials/tutorial_3_using_existing_models.ipynb">
     Tutorial 3: 
     </a></td>
-    <td> <b>Generating analytics</b> - In this tutorial we use an existing model
+    <td> <b>Train existing model</b> - In this tutorial we use an existing model
     </td>
   </tr>
   <tr>
     <td><a href="tutorials/tutorial_4_transfer_learning.ipynb">
     Tutorial 4: 
     </a></td>
-    <td> <b>Into the flow</b> - In this tutorial we use transfer learning by searching for existing data, augment it, and use it to fine-tune an existing AI model.
+    <td> <b>Transfer learning</b> - In this tutorial we use transfer learning by searching for existing data, augment it, and use it to fine-tune an existing AI model.
     </td>
   </tr>
 </tbody>
